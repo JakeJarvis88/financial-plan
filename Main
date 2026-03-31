@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Balanced Life Plan — Financial Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --rust:    #c44b2b;
+  --rust-lt: #e06848;
+  --rust-pl: #fae8e3;
+  --sand:    #d4a96a;
+  --sand-lt: #e8c89a;
+  --sand-pl: #fdf5e8;
+  --sage:    #5c7a5c;
+  --sage-lt: #7a9a7a;
+  --sage-pl: #e8f0e8;
+  --clay:    #8a5a3c;
+  --ink:     #1e1610;
+  --ink-mid: #2e2418;
+  --paper:   #faf7f2;
+  --paper2:  #f4f0e8;
+  --bone:    #ede8df;
+  --text:    #2e2418;
+  --text-m:  #5a4a38;
+  --text-l:  #8a7a68;
+  --border:  #ddd5c8;
+  --white:   #ffffff;
+  --shadow:  0 2px 20px rgba(30,22,16,0.07);
+  --shadow-lg: 0 6px 40px rgba(30,22,16,0.12);
+  --navy:    #1e2a3a;
+  --blue-pl: #e4edf8;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--paper); color: var(--text); line-height: 1.65; font-size: 15px; }
+
+/* ── COVER ────────────────────────────────────────────────── */
+.cover {
+  min-height: 100vh;
+  background: var(--ink-mid);
+  position: relative; overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0;
+}
+.cover-photo-overlay {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 30%, rgba(196,75,43,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 70% at 10% 80%, rgba(212,169,106,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(92,122,92,0.08) 0%, transparent 60%);
+}
+.cover-pattern {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c44b2b' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cover-inner {
+  position: relative; z-index: 2;
+  padding: 72px 80px 60px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.cover-eyebrow {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+}
+.cover-eyebrow span {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--sand-lt); font-weight: 500;
+}
+.cover-eyebrow::after { content: ''; height: 1px; width: 50px; background: var(--rust-lt); opacity: 0.5; }
+.cover-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 8vw, 100px);
+  font-weight: 300;
+  color: white;
+  line-height: 0.95;
+  margin-bottom: 14px;
+  letter-spacing: -1px;
+}
+.cover-h1 em { font-style: italic; color: var(--sand-lt); }
+.cover-h1 strong { font-weight: 600; display: block; }
+.cover-rule { width: 60px; height: 2px; background: linear-gradient(90deg, var(--rust-lt), var(--sand)); margin: 24px 0; }
+.cover-desc {
+  font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.55);
+  max-width: 520px; line-height: 1.7;
+}
+.cover-desc strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+.cover-pills {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px;
+}
+.pill {
+  font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 7px 16px; border-radius: 40px; font-weight: 500;
+}
+.pill-rust { background: rgba(196,75,43,0.18); color: #f08868; border: 1px solid rgba(196,75,43,0.3); }
+.pill-sand { background: rgba(212,169,106,0.15); color: var(--sand-lt); border: 1px solid rgba(212,169,106,0.25); }
+.pill-sage { background: rgba(92,122,92,0.15); color: #8ab88a; border: 1px solid rgba(92,122,92,0.25); }
+.cover-bottom {
+  position: relative; z-index: 2;
+  background: rgba(0,0,0,0.25);
+  padding: 22px 80px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.cb-item label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand); display: block; margin-bottom: 5px; }
+.cb-item span { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: white; }
+
+/* ── NAV ──────────────────────────────────────────────────── */
+.top-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--paper); border-bottom: 2px solid var(--bone);
+  box-shadow: 0 2px 12px rgba(30,22,16,0.06);
+}
+.nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 40px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-a {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
+  color: var(--text-l); padding: 14px 16px; white-space: nowrap;
+  text-decoration: none; transition: color 0.2s; border-bottom: 2px solid transparent; margin-bottom: -2px;
+}
+.nav-a:hover { color: var(--rust); border-bottom-color: var(--rust); }
+
+/* ── LAYOUT ───────────────────────────────────────────────── */
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 40px 100px; }
+.section { padding: 72px 0 0; }
+
+/* ── SECTION HEADERS ──────────────────────────────────────── */
+.sec-hdr { margin-bottom: 36px; padding-bottom: 20px; border-bottom: 1px solid var(--bone); }
+.sec-tag { font-size: 9.5px; letter-spacing: 4px; text-transform: uppercase; color: var(--rust); font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.sec-tag::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--rust); }
+.sec-hdr h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 4vw, 48px); font-weight: 400; color: var(--ink); line-height: 1.1; }
+.sec-hdr h2 em { font-style: italic; color: var(--rust); }
+.sec-hdr p { font-size: 14px; color: var(--text-l); margin-top: 8px; font-style: italic; }
+
+/* ── PHILOSOPHY CALLOUT ───────────────────────────────────── */
+.philosophy {
+  background: var(--ink-mid); border-radius: 16px; padding: 44px 52px;
+  margin: 32px 0; position: relative; overflow: hidden;
+}
+.philosophy::before {
+  content: '"'; position: absolute; top: -20px; left: 30px;
+  font-family: 'Cormorant Garamond', serif; font-size: 200px; color: rgba(196,75,43,0.12);
+  line-height: 1;
+}
+.philosophy-tag { font-size: 9.5px; letter-spacing: 4px; text-transform: uppercase; color: var(--rust-lt); margin-bottom: 14px; }
+.philosophy p { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2.5vw, 26px); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.9); line-height: 1.6; position: relative; z-index: 1; max-width: 680px; }
+.philosophy p strong { font-weight: 600; color: var(--sand-lt); font-style: normal; }
+
+/* ── CALLOUT BOXES ────────────────────────────────────────── */
+.callout { border-left: 3px solid var(--rust); background: var(--rust-pl); padding: 16px 22px; margin: 22px 0; border-radius: 0 8px 8px 0; }
+.callout-lbl { font-size: 9.5px; letter-spacing: 3px; text-transform: uppercase; color: var(--rust); font-weight: 600; margin-bottom: 6px; }
+.callout p { font-size: 13.5px; color: var(--text-m); line-height: 1.65; }
+.callout.sand { border-left-color: var(--sand); background: var(--sand-pl); }
+.callout.sand .callout-lbl { color: var(--clay); }
+.callout.sage { border-left-color: var(--sage); background: var(--sage-pl); }
+.callout.sage .callout-lbl { color: var(--sage); }
+.callout.navy { border-left-color: var(--navy); background: var(--blue-pl); }
+.callout.navy .callout-lbl { color: var(--navy); }
+
+/* ── STAT CARDS ───────────────────────────────────────────── */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 24px 0; }
+.stat-card {
+  background: var(--white); border-radius: 12px; padding: 22px 20px;
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  position: relative; overflow: hidden;
+}
+.stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--rust); border-radius: 12px 12px 0 0; }
+.stat-card.sand::before { background: var(--sand); }
+.stat-card.sage::before { background: var(--sage); }
+.stat-card.clay::before { background: var(--clay); }
+.stat-lbl { font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-l); margin-bottom: 8px; }
+.stat-val { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--ink); line-height: 1; }
+.stat-sub { font-size: 11.5px; color: var(--text-l); margin-top: 5px; }
+
+/* ── TABLES ───────────────────────────────────────────────── */
+.tbl-wrap { overflow-x: auto; margin: 20px 0; border-radius: 12px; box-shadow: var(--shadow); }
+table { width: 100%; border-collapse: collapse; background: var(--white); font-size: 13px; }
+thead { background: var(--ink-mid); }
+thead th { padding: 12px 16px; text-align: left; font-family: 'Jost'; font-size: 9.5px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-lt); white-space: nowrap; }
+thead th:first-child { border-radius: 12px 0 0 0; }
+thead th:last-child { border-radius: 0 12px 0 0; }
+tbody tr { border-bottom: 1px solid rgba(200,195,185,0.35); transition: background 0.1s; }
+tbody tr:hover { background: rgba(196,75,43,0.03); }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:nth-child(even) { background: rgba(212,169,106,0.03); }
+td { padding: 10px 16px; color: var(--text-m); vertical-align: top; }
+td:first-child { color: var(--text); font-weight: 500; }
+.r { text-align: right; font-family: 'Fira Mono', monospace; font-size: 12.5px; }
+.g { color: var(--sage); font-weight: 600; }
+.rd { color: var(--rust); }
+.sd { color: var(--clay); }
+.muted { color: var(--text-l); font-size: 11.5px; }
+.tr-tot { background: rgba(196,75,43,0.06) !important; }
+.tr-tot td { font-weight: 700; color: var(--ink) !important; }
+.tr-sec td { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-l) !important; font-weight: 600 !important; padding: 7px 16px; background: var(--paper2); }
+
+/* ── LIFE CHAPTERS ────────────────────────────────────────── */
+.chapters { display: grid; gap: 0; margin: 24px 0; }
+.chapter { display: grid; grid-template-columns: 90px 1fr; border-bottom: 1px solid var(--bone); padding: 28px 0; }
+.chapter:last-child { border-bottom: none; }
+.ch-age { text-align: center; padding-right: 24px; }
+.ch-age-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: var(--rust); line-height: 1; }
+.ch-age-to { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--sand); font-weight: 300; }
+.ch-age-lbl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-l); margin-top: 3px; }
+.ch-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 5px; }
+.ch-body .ch-years { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--rust); margin-bottom: 10px; font-weight: 500; }
+.ch-body p { font-size: 13.5px; color: var(--text-m); line-height: 1.68; }
+.ch-priorities { margin-top: 14px; display: flex; flex-direction: column; gap: 5px; }
+.ch-pri { font-size: 13px; color: var(--text-m); display: flex; gap: 8px; align-items: flex-start; }
+.ch-pri::before { content: '→'; color: var(--rust); flex-shrink: 0; font-size: 12px; margin-top: 2px; }
+.ch-tag { display: inline-block; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; font-weight: 600; margin-left: 4px; vertical-align: middle; }
+.ct-fun { background: var(--rust-pl); color: var(--rust); }
+.ct-save { background: var(--sage-pl); color: var(--sage); }
+.ct-life { background: var(--sand-pl); color: var(--clay); }
+
+/* ── LIFESTYLE BUDGET VISUAL ──────────────────────────────── */
+.budget-visual { background: var(--white); border-radius: 12px; padding: 28px; margin: 22px 0; box-shadow: var(--shadow); border: 1px solid var(--border); }
+.bv-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+.bv-sub { font-size: 12px; color: var(--text-l); font-style: italic; margin-bottom: 22px; }
+.bv-row { display: flex; align-items: center; gap: 14px; margin-bottom: 13px; }
+.bv-label { font-size: 12.5px; color: var(--text-m); width: 200px; flex-shrink: 0; }
+.bv-bar-bg { flex: 1; height: 28px; background: var(--paper2); border-radius: 6px; overflow: hidden; position: relative; }
+.bv-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; font-size: 10.5px; font-weight: 600; color: white; }
+.bv-bar.essential { background: linear-gradient(90deg, #4a6a50, #5c7a5c); }
+.bv-bar.invest { background: linear-gradient(90deg, #1e3a6e, #2a5298); }
+.bv-bar.fun { background: linear-gradient(90deg, var(--rust), var(--rust-lt)); }
+.bv-bar.kids { background: linear-gradient(90deg, var(--clay), var(--sand)); }
+.bv-val { font-family: 'Fira Mono', monospace; font-size: 12px; color: var(--text-m); width: 75px; text-align: right; flex-shrink: 0; }
+.bv-legend { display: flex; gap: 20px; margin-top: 16px; flex-wrap: wrap; }
+.bv-leg-item { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: var(--text-l); }
+.bv-leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── CAREER CARDS ─────────────────────────────────────────── */
+.career-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 22px 0; }
+@media (max-width: 700px) { .career-grid { grid-template-columns: 1fr; } }
+.career-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+.career-hdr { padding: 18px 22px; }
+.career-hdr.his { background: linear-gradient(135deg, var(--ink-mid), #3a2820); }
+.career-hdr.hers { background: linear-gradient(135deg, #1a3050, #243060); }
+.career-hdr h3 { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: white; font-weight: 500; }
+.career-hdr p { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+.career-row { display: flex; align-items: center; padding: 9px 16px; border-bottom: 1px solid var(--bone); gap: 14px; }
+.career-row:last-child { border-bottom: none; }
+.career-row.mile { background: rgba(196,75,43,0.04); }
+.cr-age { font-family: 'Fira Mono', monospace; font-size: 11px; color: var(--text-l); width: 55px; flex-shrink: 0; }
+.cr-title { font-size: 12.5px; color: var(--text-m); flex: 1; }
+.cr-sal { font-family: 'Fira Mono', monospace; font-size: 13px; color: var(--rust); font-weight: 500; }
+.cr-tag { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+.ct-ts { background: var(--rust-pl); color: var(--rust); }
+.ct-sr { background: var(--sand-pl); color: var(--clay); }
+.ct-sl { background: var(--blue-pl); color: var(--navy); }
+
+/* ── TRAVEL ───────────────────────────────────────────────── */
+.travel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 22px 0; }
+.travel-card { background: var(--white); border-radius: 12px; padding: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); text-align: center; }
+.travel-icon { font-size: 28px; margin-bottom: 8px; }
+.travel-phase { font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--rust); margin-bottom: 5px; font-weight: 600; }
+.travel-budget { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--ink); line-height: 1; }
+.travel-per { font-size: 11px; color: var(--text-l); margin-top: 4px; }
+.travel-desc { font-size: 12px; color: var(--text-m); margin-top: 8px; line-height: 1.5; }
+
+/* ── MISC ─────────────────────────────────────────────────── */
+.prose { font-size: 14.5px; color: var(--text-m); line-height: 1.78; margin: 18px 0; }
+.prose strong { color: var(--text); font-weight: 600; }
+h3.sub { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--ink); margin: 34px 0 16px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 22px 0; }
+@media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+.chart-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 26px; margin: 22px 0; box-shadow: var(--shadow); }
+.chart-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.chart-sub { font-size: 12px; color: var(--text-l); margin-bottom: 22px; font-style: italic; }
+
+/* ── TIMELINE BAR ─────────────────────────────────────────── */
+.timeline { margin: 22px 0; }
+.tl-row { display: grid; grid-template-columns: 90px 1fr 90px; gap: 14px; align-items: center; margin-bottom: 10px; }
+.tl-lbl { font-size: 12px; color: var(--text-l); font-family: 'Fira Mono', monospace; text-align: right; }
+.tl-bar-bg { height: 32px; background: var(--paper2); border-radius: 8px; overflow: hidden; position: relative; }
+.tl-bar { height: 100%; border-radius: 8px; display: flex; align-items: center; padding-left: 12px; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.9); transition: width 0.8s ease; }
+.tl-his { background: linear-gradient(90deg, var(--rust), #e06848); }
+.tl-her { background: linear-gradient(90deg, #2a5298, #4a72b8); }
+.tl-both { background: linear-gradient(90deg, var(--clay), var(--sand)); }
+.tl-val { font-family: 'Fira Mono', monospace; font-size: 12.5px; color: var(--text-m); font-weight: 500; }
+
+/* ── RETIREMENT VISUAL ────────────────────────────────────── */
+.retire-box {
+  background: var(--ink-mid); border-radius: 16px; overflow: hidden;
+  margin: 22px 0; box-shadow: var(--shadow-lg);
+}
+.rb-hdr { padding: 34px 44px 24px; }
+.rb-age { font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 300; color: var(--rust-lt); line-height: 1; }
+.rb-lbl { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 4px; }
+.rb-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: white; margin-top: 10px; }
+.rb-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); margin-top: 6px; max-width: 580px; line-height: 1.6; }
+.rb-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.07); }
+@media (max-width: 700px) { .rb-stats { grid-template-columns: 1fr 1fr; } }
+.rb-stat { padding: 22px 24px; border-right: 1px solid rgba(255,255,255,0.07); }
+.rb-stat:last-child { border-right: none; }
+.rb-stat-lbl { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--sand); margin-bottom: 6px; }
+.rb-stat-val { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: white; }
+.rb-stat-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+/* ── LADDER ─────────────────────────────────────────────────── */
+.ladder-step { display: flex; gap: 22px; padding: 22px 0; border-bottom: 1px solid var(--bone); align-items: flex-start; }
+.ladder-step:last-child { border-bottom: none; }
+.ls-age { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 400; color: var(--rust); line-height: 1; width: 75px; flex-shrink: 0; }
+.ls-age span { font-size: 11px; color: var(--text-l); display: block; font-family: 'Jost'; font-weight: 400; margin-top: 2px; }
+.ls-body h4 { font-size: 14.5px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+.ls-body p { font-size: 13.5px; color: var(--text-m); line-height: 1.65; }
+.ls-tag { display: inline-block; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; margin-bottom: 5px; font-weight: 600; }
+.lst-a { background: var(--blue-pl); color: var(--navy); }
+.lst-r { background: var(--sage-pl); color: var(--sage); }
+.lst-t { background: var(--sand-pl); color: var(--clay); }
+
+/* ── RISK GRID ────────────────────────────────────────────── */
+.risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 22px 0; }
+@media (max-width: 650px) { .risk-grid { grid-template-columns: 1fr; } }
+.risk-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 20px; box-shadow: var(--shadow); }
+.risk-hdr { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.risk-icon { font-size: 18px; }
+.risk-title { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; }
+.rbadge { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; font-weight: 600; }
+.rb-hi { background: var(--rust-pl); color: var(--rust); }
+.rb-md { background: var(--sand-pl); color: var(--clay); }
+.rb-lo { background: var(--sage-pl); color: var(--sage); }
+.risk-card p { font-size: 13px; color: var(--text-m); line-height: 1.6; }
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+.doc-footer { background: var(--ink-mid); color: rgba(255,255,255,0.3); text-align: center; padding: 32px 40px; font-size: 11.5px; line-height: 1.8; margin-top: 80px; }
+.doc-footer strong { color: rgba(255,255,255,0.6); }
+
+@media (max-width: 650px) {
+  .cover-inner { padding: 50px 30px 40px; }
+  .cover-bottom { padding: 20px 30px; grid-template-columns: 1fr 1fr; }
+  .wrap { padding: 0 20px 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     COVER
+═══════════════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-photo-overlay"></div>
+  <div class="cover-pattern"></div>
+
+  <div class="cover-inner">
+    <div class="cover-eyebrow">
+      <span>A Life-Forward Financial Plan</span>
+    </div>
+    <h1 class="cover-h1">
+      <em>Live well.</em>
+      <strong>Retire at 60.</strong>
+      <em>No regrets.</em>
+    </h1>
+    <div class="cover-rule"></div>
+    <p class="cover-desc">
+      A plan built for two people who want to <strong>actually enjoy the ride</strong> — not just the destination. Real vacations. Good restaurants. Experiences while you're young. And a comfortable, secure retirement for both of you at 60. <strong>Not $10 million. Not extreme frugality. Just a well-designed life.</strong>
+    </p>
+    <div class="cover-pills">
+      <span class="pill pill-rust">Both Retire at 60 · 2063</span>
+      <span class="pill pill-sand">Kids Before She Turns 30</span>
+      <span class="pill pill-sage">$12–18K/Year Travel Budget</span>
+      <span class="pill pill-rust">~$3.5M Target at 60</span>
+      <span class="pill pill-sand">TS/SCI Analyst + Hospital SLP</span>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cb-item"><label>Your Ages</label><span>Both 23 · Virginia</span></div>
+    <div class="cb-item"><label>Retirement Target</label><span>$3.0–3.8M Real</span></div>
+    <div class="cb-item"><label>Retirement Date</label><span>Both at 60 · 2063</span></div>
+    <div class="cb-item"><label>Annual Fun Budget</label><span>$12–18K Travel + Life</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════════════════════ -->
+<nav class="top-nav">
+  <div class="nav-inner">
+    <a class="nav-a" href="#s1">Philosophy</a>
+    <a class="nav-a" href="#s2">Summary</a>
+    <a class="nav-a" href="#s3">Careers</a>
+    <a class="nav-a" href="#s4">Life Chapters</a>
+    <a class="nav-a" href="#s5">Budgets</a>
+    <a class="nav-a" href="#s6">Travel & Fun</a>
+    <a class="nav-a" href="#s7">Family</a>
+    <a class="nav-a" href="#s8">529 Plans</a>
+    <a class="nav-a" href="#s9">Investments</a>
+    <a class="nav-a" href="#s10">Projections</a>
+    <a class="nav-a" href="#s11">Retirement</a>
+    <a class="nav-a" href="#s12">Risk & Optimize</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 1 — PHILOSOPHY
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s1">
+  <div class="sec-hdr">
+    <div class="sec-tag">01 · Core Principle</div>
+    <h2>This Plan Is About <em>Both</em></h2>
+    <p>What we're actually optimizing for — and why it changes everything</p>
+  </div>
+
+  <div class="philosophy">
+    <div class="philosophy-tag">The Foundational Shift</div>
+    <p>The best financial plan is not the one that maximizes your portfolio at retirement. It's the one that <strong>maximizes your life</strong> across the entire arc — including the years you're 26 and traveling, 34 and exhausted with toddlers, 44 and at the peak of your career, and 60 and walking out the door together. You don't get those decades back.</p>
+  </div>
+
+  <div class="prose">
+    <p>The previous plan optimized for maximum wealth. This one optimizes for a great life at every age, with enough wealth at the end to be genuinely free. The difference isn't recklessness — it's rebalancing. You'll still max your Roth IRAs every year. You'll still get the full employer match on both 401(k)s. You'll still invest substantial amounts. But you'll also take two real trips per year, go out on a Friday night without guilt, have the kids in whatever activities they love, and upgrade your home when it makes sense for your family — not just your spreadsheet.</p>
+    <p>By living a fuller life along the way, you'll likely be <strong>better partners, better parents, and more fulfilled at work</strong> — which often accelerates career growth anyway. This is a more complete theory of wealth.</p>
+  </div>
+
+  <div class="callout sage">
+    <div class="callout-lbl">What Changes vs. the Previous Plan</div>
+    <p><strong>Lower savings rate (25–30% vs. 45–55%).</strong> Higher lifestyle spending. Generous travel budget at every phase. Kids born before she turns 30 (earlier timeline). Both retire at 60 (not him at 50, her at 60). Target ~$3.5M in real dollars at retirement — enough for a secure, comfortable $120K+ annual income at a healthy 3.5% withdrawal rate. Not $10 million. Not barely enough. <em>Just right.</em></p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 2 — EXECUTIVE SUMMARY
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s2">
+  <div class="sec-hdr">
+    <div class="sec-tag">02 · Executive Summary</div>
+    <h2>The <em>Numbers</em> Still Work Beautifully</h2>
+    <p>Lower savings rate, better life — and still a secure, comfortable retirement</p>
+  </div>
+
+  <div class="callout sage">
+    <div class="callout-lbl">✓ Verdict: Absolutely Achievable — With Room to Breathe</div>
+    <p>On dual incomes that grow from $164K to $335K+, saving 25–30% of gross income while spending generously on life, you reach approximately <strong>$3.2–3.8M in real (inflation-adjusted) dollars</strong> at age 60. At a 3.5% withdrawal rate, that's $112K–$133K/year in spending power — for two people with no mortgage (home paid off or nearly so), children grown, and Medicare at 65. You will not worry about money in retirement. You will also not have worried about money during your working years. That's the win.</p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-lbl">Portfolio at 60 (Real $)</div>
+      <div class="stat-val">$3.5M</div>
+      <div class="stat-sub">Central projection; range $3.2–3.8M</div>
+    </div>
+    <div class="stat-card sage">
+      <div class="stat-lbl">Annual Retirement Income (3.5% SWR)</div>
+      <div class="stat-val">$122K</div>
+      <div class="stat-sub">Tax-efficient; more than enough at 60</div>
+    </div>
+    <div class="stat-card sand">
+      <div class="stat-lbl">Annual Travel & Fun Budget</div>
+      <div class="stat-val">$12–18K</div>
+      <div class="stat-sub">Rising through your prime years</div>
+    </div>
+    <div class="stat-card clay">
+      <div class="stat-lbl">Both Kids Born By</div>
+      <div class="stat-val">Age 29</div>
+      <div class="stat-sub">Her age — both kids before 30</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Savings Rate (Target)</div>
+      <div class="stat-val">25–30%</div>
+      <div class="stat-sub">Of gross income — comfortable, not punishing</div>
+    </div>
+    <div class="stat-card sage">
+      <div class="stat-lbl">Retirement Date</div>
+      <div class="stat-val">2063</div>
+      <div class="stat-sub">Both at 60 — same day, together</div>
+    </div>
+  </div>
+
+  <div class="retire-box">
+    <div class="rb-hdr">
+      <div class="rb-age">60</div>
+      <div class="rb-lbl">Both of you · Together · 2063</div>
+      <div class="rb-title">Full Retirement — Clean, Simple, Earned</div>
+      <div class="rb-desc">No phased transitions. No one working while the other is retired. No extreme frugality for decades to fund an earlier exit. Just a normal, full, enjoyable working life — and then retirement together, exactly when you planned, with the financial security to do whatever you want for the next 30+ years.</div>
+    </div>
+    <div class="rb-stats">
+      <div class="rb-stat">
+        <div class="rb-stat-lbl">Portfolio (Real $)</div>
+        <div class="rb-stat-val">~$3.5M</div>
+        <div class="rb-stat-sub">Central estimate</div>
+      </div>
+      <div class="rb-stat">
+        <div class="rb-stat-lbl">Annual Spending Capacity</div>
+        <div class="rb-stat-val">$122K</div>
+        <div class="rb-stat-sub">At 3.5% SWR</div>
+      </div>
+      <div class="rb-stat">
+        <div class="rb-stat-lbl">SWR Required</div>
+        <div class="rb-stat-val">3.5%</div>
+        <div class="rb-stat-sub">Historically very safe</div>
+      </div>
+      <div class="rb-stat">
+        <div class="rb-stat-lbl">Healthcare at 65</div>
+        <div class="rb-stat-val">Medicare</div>
+        <div class="rb-stat-sub">Both eligible at 65</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout navy">
+    <div class="callout-lbl">The Math in Plain English</div>
+    <p>You'll invest roughly <strong>$35–65K/year</strong> depending on the phase (rising sharply with dual income and post-daycare). At 7% real annual return over 37 years, with contributions growing as incomes grow, you reliably land in the $3.2–3.8M range. That's not cutting it close — it's a comfortable target with a real margin of safety. The years you spend on travel and experiences don't meaningfully erode the retirement outcome; they add immeasurably to the years you can't get back.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 3 — CAREER TRAJECTORIES
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s3">
+  <div class="sec-hdr">
+    <div class="sec-tag">03 · Income Foundation</div>
+    <h2>Your Careers Over <em>37 Years</em></h2>
+    <p>The income engine behind everything — TS-cleared analytics and hospital SLP</p>
+  </div>
+
+  <div class="career-grid">
+    <div class="career-card">
+      <div class="career-hdr his">
+        <h3>📊 Data Analyst — TS/SCI Clearance</h3>
+        <p>Cleared government contractor / industry · Virginia</p>
+      </div>
+      <div>
+        <div class="career-row"><div class="cr-age">Age 23</div><div class="cr-title">Data Analyst I</div><div class="cr-sal">$85K</div><div class="cr-tag ct-ts">Start</div></div>
+        <div class="career-row mile"><div class="cr-age">Age 25</div><div class="cr-title">Analyst II — SCI endorsement, clearance premium</div><div class="cr-sal">$97K</div><div class="cr-tag ct-ts">SCI</div></div>
+        <div class="career-row"><div class="cr-age">Age 27</div><div class="cr-title">Senior Data Analyst</div><div class="cr-sal">$112K</div><div class="cr-tag ct-sr">Senior</div></div>
+        <div class="career-row mile"><div class="cr-age">Age 30–33</div><div class="cr-title">Lead / Principal Analyst</div><div class="cr-sal">$135–155K</div><div class="cr-tag ct-sr">Lead</div></div>
+        <div class="career-row"><div class="cr-age">Age 34–40</div><div class="cr-title">Sr. Principal / Program Analyst</div><div class="cr-sal">$165–185K</div><div class="cr-tag ct-ts">TS/SCI</div></div>
+        <div class="career-row mile"><div class="cr-age">Age 40–55</div><div class="cr-title">Director / Sr. Program Data Science</div><div class="cr-sal">$195–225K</div><div class="cr-tag ct-sr">Peak</div></div>
+        <div class="career-row" style="background:rgba(196,75,43,0.06)"><div class="cr-age">Age 60</div><div class="cr-title" style="color:var(--rust);font-weight:600">🌅 Retirement</div><div class="cr-sal">—</div></div>
+      </div>
+    </div>
+    <div class="career-card">
+      <div class="career-hdr hers">
+        <h3>🏥 Speech-Language Pathologist (CCC-SLP)</h3>
+        <p>Hospital acute care / dysphagia · Virginia</p>
+      </div>
+      <div>
+        <div class="career-row"><div class="cr-age">Age 24</div><div class="cr-title">SLP Clinical Fellowship Year</div><div class="cr-sal">$74K</div><div class="cr-tag ct-sl">CF Year</div></div>
+        <div class="career-row mile"><div class="cr-age">Age 25</div><div class="cr-title">Staff SLP — CCC-SLP credential</div><div class="cr-sal">$80K</div><div class="cr-tag ct-sl">CCC-SLP</div></div>
+        <div class="career-row"><div class="cr-age">Age 26–27</div><div class="cr-title">Clinical SLP — hospital acute care</div><div class="cr-sal">$85–89K</div><div class="cr-tag ct-sl">Hospital</div></div>
+        <div class="career-row mile"><div class="cr-age">Age 27</div><div class="cr-title">6-month leave — Kid 1 (returns full-time)</div><div class="cr-sal">~$44K*</div><div class="cr-tag ct-sl">Maternity</div></div>
+        <div class="career-row"><div class="cr-age">Age 28</div><div class="cr-title">Sr. SLP — FEES certification</div><div class="cr-sal">$93K</div><div class="cr-tag ct-sr">Senior</div></div>
+        <div class="career-row mile"><div class="cr-age">Age 29</div><div class="cr-title">6-month leave — Kid 2 (returns full-time)</div><div class="cr-sal">~$48K*</div><div class="cr-tag ct-sl">Maternity</div></div>
+        <div class="career-row"><div class="cr-age">Age 30–40</div><div class="cr-title">Lead SLP / Clinical Coordinator</div><div class="cr-sal">$100–116K</div><div class="cr-tag ct-sr">Lead</div></div>
+        <div class="career-row mile"><div class="cr-age">Age 40–60</div><div class="cr-title">Sr. Lead / SLP Specialist</div><div class="cr-sal">$116–124K</div><div class="cr-tag ct-sr">Peak</div></div>
+        <div class="career-row" style="background:rgba(42,82,152,0.05)"><div class="cr-age">Age 60</div><div class="cr-title" style="color:#2a5298;font-weight:600">🌅 Retirement — Together</div><div class="cr-sal">—</div></div>
+      </div>
+    </div>
+  </div>
+  <p class="prose" style="font-size:12px;color:var(--text-l)">*Maternity leave income = partial year (approx. 6 weeks paid STD + remainder unpaid FMLA). Estimated at ~50% of full annual salary for the leave year.</p>
+
+  <h3 class="sub">Combined Household Income — Selected Years</h3>
+  <div class="timeline">
+    <div class="tl-row"><div class="tl-lbl">2026 (23)</div><div class="tl-bar-bg"><div class="tl-bar tl-his" style="width:21%">$85K — his only</div></div><div class="tl-val">$85K</div></div>
+    <div class="tl-row"><div class="tl-lbl">2027 (24)</div><div class="tl-bar-bg"><div class="tl-bar tl-both" style="width:43%">$90K + $74K</div></div><div class="tl-val">$164K</div></div>
+    <div class="tl-row"><div class="tl-lbl">2030 (27)</div><div class="tl-bar-bg"><div class="tl-bar tl-both" style="width:50%">$112K + partial leave yr</div></div><div class="tl-val">~$156K*</div></div>
+    <div class="tl-row"><div class="tl-lbl">2032 (29)</div><div class="tl-bar-bg"><div class="tl-bar tl-both" style="width:54%">$128K + partial leave yr</div></div><div class="tl-val">~$176K*</div></div>
+    <div class="tl-row"><div class="tl-lbl">2035 (32)</div><div class="tl-bar-bg"><div class="tl-bar tl-both" style="width:62%">$143K + $103K</div></div><div class="tl-val">$246K</div></div>
+    <div class="tl-row"><div class="tl-lbl">2040 (37)</div><div class="tl-bar-bg"><div class="tl-bar tl-both" style="width:76%">$178K + $116K</div></div><div class="tl-val">$294K</div></div>
+    <div class="tl-row"><div class="tl-lbl">2050 (47)</div><div class="tl-bar-bg"><div class="tl-bar tl-both" style="width:90%">$210K + $121K</div></div><div class="tl-val">$331K</div></div>
+    <div class="tl-row"><div class="tl-lbl">2060 (57)</div><div class="tl-bar-bg"><div class="tl-bar tl-both" style="width:98%">$222K + $124K</div></div><div class="tl-val">$346K</div></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 4 — LIFE CHAPTERS
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s4">
+  <div class="sec-hdr">
+    <div class="sec-tag">04 · The Journey</div>
+    <h2>Your Life in <em>Five Chapters</em></h2>
+    <p>A financial and personal roadmap for each distinct era — savings and experiences in balance</p>
+  </div>
+
+  <div class="chapters">
+    <div class="chapter">
+      <div class="ch-age">
+        <div class="ch-age-num">23</div>
+        <div class="ch-age-to">–24</div>
+        <div class="ch-age-lbl">2026–27</div>
+      </div>
+      <div class="ch-body">
+        <div class="ch-years">Chapter 1 — Foundation & Courtship Years</div>
+        <h3>Build the base. Enjoy being young. Don't live like you're already retired.</h3>
+        <p>You're 23 with a good job, no rent, and your whole future ahead of you. This is the chapter for establishing habits — Roth IRA on autopilot, 401(k) contribution going in on Day 1, a small emergency fund. But it's also the chapter for exploring your city, traveling with your soon-to-be-dual-income future, and not treating every dollar as sacred. She finishes her degree; she starts her career. Life is genuinely exciting right now.</p>
+        <div class="ch-priorities">
+          <div class="ch-pri">Max Roth IRA immediately ($7K/yr) — the one rule that never bends <span class="ch-tag ct-save">Always</span></div>
+          <div class="ch-pri">10–12% to 401(k) — capture the employer match above all else</div>
+          <div class="ch-pri">Save $18–22K cash for first car purchase in 2027 <span class="ch-tag ct-save">Goal</span></div>
+          <div class="ch-pri">Pay minimums on student loans — 5% loans lose to the stock market over time</div>
+          <div class="ch-pri">$500–700/month for fun, dates, a few weekend trips <span class="ch-tag ct-fun">Live It</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter">
+      <div class="ch-age">
+        <div class="ch-age-num">24</div>
+        <div class="ch-age-to">–28</div>
+        <div class="ch-age-lbl">2027–31</div>
+      </div>
+      <div class="ch-body">
+        <div class="ch-years">Chapter 2 — Dual Income, DINKs, & Real Adventures</div>
+        <h3>The best financial chapter of your lives. Spend some of it.</h3>
+        <p>She starts working mid-2027. Your household income jumps to $164K overnight and climbs toward $200K+. Student loans retire by 2029. Before kids arrive (she's targeting her first at age 27), you have roughly 2–3 years as a dual-income, no-kids couple with relatively low fixed expenses. This window is finite. It's also the window for real travel — Europe, Japan, national parks, road trips. You will not have this flexibility again until your 40s.</p>
+        <div class="ch-priorities">
+          <div class="ch-pri">Both max Roth IRAs ($14K combined) — still the bedrock <span class="ch-tag ct-save">Always</span></div>
+          <div class="ch-pri">Increase 401(k)s to 15–18% of gross each; shift to Traditional as income rises</div>
+          <div class="ch-pri">Aggressively pay off $40K student loans by end of 2029 ($1,200+ extra/month)</div>
+          <div class="ch-pri">Save for House #1 down payment (target: 20% on $520–560K by 2030)</div>
+          <div class="ch-pri">$1,200–1,800/month for a real life: dining, concerts, weekend escapes, one big trip per year <span class="ch-tag ct-fun">Earn It</span></div>
+          <div class="ch-pri">Taxable brokerage starts after loans paid: $1,000/month minimum <span class="ch-tag ct-save">Bridge Fund</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter">
+      <div class="ch-age">
+        <div class="ch-age-num">27</div>
+        <div class="ch-age-to">–35</div>
+        <div class="ch-age-lbl">2030–38</div>
+      </div>
+      <div class="ch-body">
+        <div class="ch-years">Chapter 3 — Family Years (Joyful, Constrained, Worth Every Penny)</div>
+        <h3>Two kids. Daycare. Love and chaos. Still investing. Still living.</h3>
+        <p>Kid 1 arrives when she's 27 (his age 28). Kid 2 when she's 29 (his age 30). She takes a 6-month leave each time and returns full-time. Daycare peaks around $2,500/month in the years they overlap. Combined income is $240K–$280K by this point — daycare is real money, but it's manageable. You keep investing steadily, you keep taking at least one family trip per year, and you don't treat parenthood as a financial emergency. By age 35, both kids are in public school and the cash flow opens dramatically.</p>
+        <div class="ch-priorities">
+          <div class="ch-pri">Roth IRAs: never stop, no matter how hard the daycare years feel <span class="ch-tag ct-save">Sacred</span></div>
+          <div class="ch-pri">Both 401(k)s: at minimum enough to capture full employer match; ideally 15%+ each</div>
+          <div class="ch-pri">Open 529 plans when each child is born ($150/month per child) <span class="ch-tag ct-save">529s</span></div>
+          <div class="ch-pri">House #1 purchase at age 28–29 (mortgage on $520–560K; 20% down)</div>
+          <div class="ch-pri">Keep a $1,000–1,500/month fun/travel budget even during the squeeze years <span class="ch-tag ct-fun">Non-Negotiable</span></div>
+          <div class="ch-pri">Dependent Care FSA ($5K/yr) to offset daycare costs pre-tax — easy win</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter">
+      <div class="ch-age">
+        <div class="ch-age-num">35</div>
+        <div class="ch-age-to">–52</div>
+        <div class="ch-age-lbl">2038–55</div>
+      </div>
+      <div class="ch-body">
+        <div class="ch-years">Chapter 4 — The Acceleration Years (Both Kids in School, Income at Peak)</div>
+        <h3>Cash flow opens. Invest hard. Travel better. This is your prime.</h3>
+        <p>Daycare ends. Kids are in public school. Combined income climbs toward $300K+. This is when the real wealth-building happens — and also when you have the freedom to travel more ambitiously, upgrade your home, and spend on the experiences that define a well-lived life. The portfolio compound rate accelerates. By your mid-40s, you'll have a portfolio north of $1.5M and growing by more in annual returns than you contribute. Let it work.</p>
+        <div class="ch-priorities">
+          <div class="ch-pri">Max all tax-advantaged space: both 401(k)s ($47K+ total) + both IRAs ($14K) = $61K+ <span class="ch-tag ct-save">Maximize</span></div>
+          <div class="ch-pri">Taxable brokerage: $2,000–3,000+/month on top of 401(k)s</div>
+          <div class="ch-pri">Travel budget rises to $18K+/year — this is when you do the big trips <span class="ch-tag ct-fun">Live Fully</span></div>
+          <div class="ch-pri">Consider House #2 upgrade at age 38–42 when kids are in school and cash flow permits</div>
+          <div class="ch-pri">529s funded to target — stop contributions when each hits $50K</div>
+          <div class="ch-pri">Age 48–50: begin gradually building a bond tent; start Roth conversion planning</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter" style="border-bottom:none">
+      <div class="ch-age">
+        <div class="ch-age-num">52</div>
+        <div class="ch-age-to">–60</div>
+        <div class="ch-age-lbl">2055–63</div>
+      </div>
+      <div class="ch-body">
+        <div class="ch-years">Chapter 5 — Final Stretch: Eyes on the Horizon</div>
+        <h3>Finish line in sight. Protect the portfolio. Plan the exit.</h3>
+        <p>Eight years to go. Portfolio is ~$2.5M+ and growing. Children are adults. Combined income likely $340K+. This is the chapter for de-risking, Roth conversions, and fine-tuning your retirement income plan. It's also the chapter for your best travel — bucket list items, anniversary trips, the experiences that require your best health and energy. You're almost there. Keep investing. Don't stop living. Walk out the door together at 60.</p>
+        <div class="ch-priorities">
+          <div class="ch-pri">Continue maxing all accounts; build 2-year cash buffer starting at age 57 <span class="ch-tag ct-save">Safety</span></div>
+          <div class="ch-pri">Roth conversion ladder: convert $50–70K/year from Traditional 401(k) while still in moderate tax brackets</div>
+          <div class="ch-pri">Shift allocation: 80/20 by 55, 70/30 by 58, 65/35 by 60</div>
+          <div class="ch-pri">Age 59: price ACA marketplace for the 60–65 bridge; budget $25K/year <span class="ch-tag ct-life">Plan Ahead</span></div>
+          <div class="ch-pri">Do the big bucket-list travel in your late 50s — health and energy are assets <span class="ch-tag ct-fun">The Good Stuff</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 5 — BUDGETS
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s5">
+  <div class="sec-hdr">
+    <div class="sec-tag">05 · Monthly Cash Flow</div>
+    <h2>Budgets That Don't Make You <em>Miserable</em></h2>
+    <p>Honest monthly budgets that include real spending — not the stripped-down version</p>
+  </div>
+
+  <h3 class="sub">Phase 1 — Single Income, No Rent (2026–Mid 2027)</h3>
+  <div class="callout">
+    <div class="callout-lbl">Income Snapshot</div>
+    <p>$85K salary + ~$12K side income = $97K gross. After fed/VA tax + FICA, Roth 401(k) contributions: take-home ≈ <strong>$5,200/month</strong>.</p>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Category</th><th>Item</th><th class="r">Monthly</th><th class="r">Annual</th></tr></thead>
+    <tbody>
+      <tr class="tr-sec"><td colspan="4">Income</td></tr>
+      <tr><td>Net Take-Home</td><td>After taxes + 401(k)</td><td class="r g">$5,200</td><td class="r g">$62,400</td></tr>
+      <tr class="tr-sec"><td colspan="4">Fixed Obligations</td></tr>
+      <tr><td>Wife's Education</td><td>Tuition cash-flow</td><td class="r rd">$(1,050)</td><td class="r rd">$(12,600)</td></tr>
+      <tr><td>Student Loans</td><td>Minimum only</td><td class="r rd">$(300)</td><td class="r rd">$(3,600)</td></tr>
+      <tr><td>Insurance</td><td>Health (employer), auto, renters</td><td class="r rd">$(320)</td><td class="r rd">$(3,840)</td></tr>
+      <tr><td>Phone + Internet</td><td>Both lines</td><td class="r rd">$(155)</td><td class="r rd">$(1,860)</td></tr>
+      <tr class="tr-sec"><td colspan="4">Living — The Good Life Version</td></tr>
+      <tr><td>Groceries + Dining</td><td>Cooking at home + date nights</td><td class="r rd">$(650)</td><td class="r rd">$(7,800)</td></tr>
+      <tr><td>Transportation</td><td>Gas + maintenance</td><td class="r rd">$(270)</td><td class="r rd">$(3,240)</td></tr>
+      <tr><td>Entertainment + Fun</td><td>Concerts, bars, activities, subscriptions</td><td class="r rd">$(400)</td><td class="r rd">$(4,800)</td></tr>
+      <tr><td>Weekend trips / Travel fund</td><td>Saving toward 1 real trip</td><td class="r rd">$(300)</td><td class="r rd">$(3,600)</td></tr>
+      <tr><td>Personal / Clothing / Misc</td><td></td><td class="r rd">$(220)</td><td class="r rd">$(2,640)</td></tr>
+      <tr class="tr-sec"><td colspan="4">Savings</td></tr>
+      <tr><td>Roth IRA</td><td>Annual max ($7K) via monthly auto-transfer</td><td class="r sd">$(583)</td><td class="r sd">$(7,000)</td></tr>
+      <tr><td>Roth 401(k)</td><td>~10% — payroll deduction (in gross, not take-home)</td><td class="r sd">—</td><td class="r sd">—</td></tr>
+      <tr><td>Car Sinking Fund</td><td>First car purchase 2027</td><td class="r sd">$(800)</td><td class="r sd">$(9,600)</td></tr>
+      <tr><td>Emergency Fund</td><td>Build to $12K</td><td class="r sd">$(250)</td><td class="r sd">$(3,000)</td></tr>
+      <tr class="tr-tot"><td colspan="2">Monthly Buffer</td><td class="r">~$303</td><td class="r">~$3,600</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 class="sub">Phase 2 — Dual Income, DINKs (2028–2030 Representative)</h3>
+  <div class="callout">
+    <div class="callout-lbl">Income Snapshot</div>
+    <p>Combined gross ~$185K (his $97K + her $80K + $8K side). After both maxing 401(k)s, taxes: take-home ≈ <strong>$9,800/month</strong>. Renting $2,000/month. Student loans being aggressively paid.</p>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Category</th><th>Item</th><th class="r">Monthly</th><th class="r">Annual</th></tr></thead>
+    <tbody>
+      <tr class="tr-sec"><td colspan="4">Income</td></tr>
+      <tr><td>Combined Net Take-Home</td><td>After taxes + both 401(k)s</td><td class="r g">$9,800</td><td class="r g">$117,600</td></tr>
+      <tr class="tr-sec"><td colspan="4">Fixed</td></tr>
+      <tr><td>Rent</td><td>Nice 2BR in Virginia</td><td class="r rd">$(2,100)</td><td class="r rd">$(25,200)</td></tr>
+      <tr><td>Student Loans</td><td>Aggressive paydown — done by late 2029</td><td class="r rd">$(1,200)</td><td class="r rd">$(14,400)</td></tr>
+      <tr><td>Insurance</td><td>Health (both employer), auto ×2</td><td class="r rd">$(500)</td><td class="r rd">$(6,000)</td></tr>
+      <tr><td>Utilities + Subscriptions</td><td></td><td class="r rd">$(270)</td><td class="r rd">$(3,240)</td></tr>
+      <tr class="tr-sec"><td colspan="4">Living — Genuinely Enjoying Dual Income</td></tr>
+      <tr><td>Groceries + Dining</td><td>Good food; real restaurants</td><td class="r rd">$(900)</td><td class="r rd">$(10,800)</td></tr>
+      <tr><td>Transportation</td><td>Two cars (paid cash)</td><td class="r rd">$(500)</td><td class="r rd">$(6,000)</td></tr>
+      <tr><td>Entertainment + Activities</td><td>Concerts, sports, experiences</td><td class="r rd">$(600)</td><td class="r rd">$(7,200)</td></tr>
+      <tr><td>Travel fund</td><td>Toward 2 real trips/year</td><td class="r rd">$(900)</td><td class="r rd">$(10,800)</td></tr>
+      <tr><td>Personal / Misc</td><td>Clothing, gifts, household</td><td class="r rd">$(350)</td><td class="r rd">$(4,200)</td></tr>
+      <tr class="tr-sec"><td colspan="4">Savings</td></tr>
+      <tr><td>Both Roth IRAs</td><td>Combined max</td><td class="r sd">$(1,167)</td><td class="r sd">$(14,000)</td></tr>
+      <tr><td>Both 401(k)s (Traditional)</td><td>Pre-deducted from payroll</td><td class="r muted">in gross</td><td class="r muted">$(38–47K)</td></tr>
+      <tr><td>House Down Payment</td><td>Goal: 20% on $540K by mid-2030</td><td class="r sd">$(1,000)</td><td class="r sd">$(12,000)</td></tr>
+      <tr><td>Taxable Brokerage</td><td>After loans paid (begins ~2030)</td><td class="r sd">$(800)</td><td class="r sd">$(9,600)</td></tr>
+      <tr class="tr-tot"><td colspan="2">Monthly Buffer</td><td class="r">~$513</td><td class="r">~$6,160</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 class="sub">Phase 3 — Family with Kids + Daycare (2033 — Both in Care)</h3>
+  <div class="callout sand">
+    <div class="callout-lbl">The Daycare Reality Check</div>
+    <p>Both children in daycare simultaneously for roughly 2 years (Kid 1 preschool + Kid 2 infant). Peak cost ~$2,500/month = $30K/year. At a combined income of ~$260K+ by this point, it's hard but not catastrophic. The mortgage is established. Both cars are paid off. You keep investing and keep living — just more modestly on fun for 2 years.</p>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Category</th><th>Item</th><th class="r">Monthly</th><th class="r">Annual</th></tr></thead>
+    <tbody>
+      <tr class="tr-sec"><td colspan="4">Income (~$260K gross combined)</td></tr>
+      <tr><td>Net Take-Home</td><td>After both 401(k)s + taxes</td><td class="r g">$11,400</td><td class="r g">$136,800</td></tr>
+      <tr class="tr-sec"><td colspan="4">Fixed Obligations</td></tr>
+      <tr><td>Mortgage (House #1)</td><td>PITI on ~$540K purchase, 20% down, 6.5% rate</td><td class="r rd">$(2,500)</td><td class="r rd">$(30,000)</td></tr>
+      <tr><td>Daycare</td><td>Both children simultaneously — PEAK</td><td class="r rd">$(2,500)</td><td class="r rd">$(30,000)</td></tr>
+      <tr><td>Insurance</td><td>Health, home, auto ×2, term life ×2</td><td class="r rd">$(720)</td><td class="r rd">$(8,640)</td></tr>
+      <tr><td>Utilities + Subscriptions</td><td>Owned home, all recurring</td><td class="r rd">$(380)</td><td class="r rd">$(4,560)</td></tr>
+      <tr class="tr-sec"><td colspan="4">Living — Compressed but Not Punishing</td></tr>
+      <tr><td>Groceries + Family Dining</td><td>Young family food budget</td><td class="r rd">$(950)</td><td class="r rd">$(11,400)</td></tr>
+      <tr><td>Transportation</td><td>Two paid-off cars</td><td class="r rd">$(500)</td><td class="r rd">$(6,000)</td></tr>
+      <tr><td>Children (beyond daycare)</td><td>Clothing, pediatrician, activities</td><td class="r rd">$(450)</td><td class="r rd">$(5,400)</td></tr>
+      <tr><td>Fun + Entertainment</td><td>Reduced but protected — you still deserve evenings out</td><td class="r rd">$(500)</td><td class="r rd">$(6,000)</td></tr>
+      <tr><td>Annual Family Trip</td><td>1 modest family trip/year ($600/month saved)</td><td class="r rd">$(600)</td><td class="r rd">$(7,200)</td></tr>
+      <tr class="tr-sec"><td colspan="4">Savings (Maintained Despite the Squeeze)</td></tr>
+      <tr><td>Both Roth IRAs</td><td>Combined — non-negotiable</td><td class="r sd">$(1,167)</td><td class="r sd">$(14,000)</td></tr>
+      <tr><td>Both 401(k)s</td><td>Pre-deducted — at least to match, ideally more</td><td class="r muted">in gross</td><td class="r muted">$(30–47K)</td></tr>
+      <tr><td>Both 529 Plans</td><td>$150/child/month</td><td class="r sd">$(300)</td><td class="r sd">$(3,600)</td></tr>
+      <tr><td>Taxable Brokerage</td><td>Reduced but maintained</td><td class="r sd">$(400)</td><td class="r sd">$(4,800)</td></tr>
+      <tr class="tr-tot"><td colspan="2">Monthly Buffer</td><td class="r">~$433</td><td class="r">~$5,200</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 class="sub">Phase 4 — Peak Income, Kids in School (2040 — Age 37)</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Category</th><th>Item</th><th class="r">Monthly</th><th class="r">Annual</th></tr></thead>
+    <tbody>
+      <tr class="tr-sec"><td colspan="4">Income (~$294K gross combined)</td></tr>
+      <tr><td>Net Take-Home</td><td>After both max 401(k)s + taxes</td><td class="r g">$13,500</td><td class="r g">$162,000</td></tr>
+      <tr class="tr-sec"><td colspan="4">Fixed</td></tr>
+      <tr><td>Mortgage (House #1 or #2)</td><td>PITI</td><td class="r rd">$(2,700)</td><td class="r rd">$(32,400)</td></tr>
+      <tr><td>Insurance (health, home, auto, life)</td><td></td><td class="r rd">$(680)</td><td class="r rd">$(8,160)</td></tr>
+      <tr><td>Utilities + Subscriptions</td><td></td><td class="r rd">$(380)</td><td class="r rd">$(4,560)</td></tr>
+      <tr class="tr-sec"><td colspan="4">Living — The Good Years (This Is What You Worked For)</td></tr>
+      <tr><td>Food / Household</td><td>Good groceries, restaurants, family dining</td><td class="r rd">$(1,100)</td><td class="r rd">$(13,200)</td></tr>
+      <tr><td>Transportation</td><td>Two reliable vehicles</td><td class="r rd">$(550)</td><td class="r rd">$(6,600)</td></tr>
+      <tr><td>Children (school age)</td><td>Activities, sports, lessons, school needs</td><td class="r rd">$(700)</td><td class="r rd">$(8,400)</td></tr>
+      <tr><td>Entertainment + Experiences</td><td>Concerts, dining, weekends, hobbies</td><td class="r rd">$(900)</td><td class="r rd">$(10,800)</td></tr>
+      <tr><td>Travel — The Real Budget</td><td>2 trips/year; one big (international), one family <span class="ch-tag ct-fun">Priority</span></td><td class="r rd">$(1,500)</td><td class="r rd">$(18,000)</td></tr>
+      <tr><td>Personal / Misc / Gifts</td><td></td><td class="r rd">$(450)</td><td class="r rd">$(5,400)</td></tr>
+      <tr class="tr-sec"><td colspan="4">Savings</td></tr>
+      <tr><td>Both Roth IRAs</td><td>Max</td><td class="r sd">$(1,167)</td><td class="r sd">$(14,000)</td></tr>
+      <tr><td>Both 401(k)s</td><td>Both maxed pre-payroll</td><td class="r muted">in gross</td><td class="r muted">$(47,000)</td></tr>
+      <tr><td>Taxable Brokerage</td><td>Primary wealth engine beyond tax-advantaged</td><td class="r sd">$(2,500)</td><td class="r sd">$(30,000)</td></tr>
+      <tr><td>529s</td><td>$150/child (ongoing or wind-down)</td><td class="r sd">$(300)</td><td class="r sd">$(3,600)</td></tr>
+      <tr class="tr-tot"><td colspan="2">Monthly Buffer / Flex</td><td class="r">~$1,073</td><td class="r">~$12,880</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 6 — TRAVEL & FUN
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s6">
+  <div class="sec-hdr">
+    <div class="sec-tag">06 · The Point of All This</div>
+    <h2>Travel, Experiences & <em>Actually Living</em></h2>
+    <p>Explicit travel budgets by life phase — not aspirational, actually planned for</p>
+  </div>
+
+  <div class="philosophy" style="padding:34px 44px">
+    <div class="philosophy-tag">Why This Section Exists</div>
+    <p>Most financial plans treat travel and experiences as a <strong>variable to cut</strong> when times are tight. This one treats them as <strong>non-negotiable line items</strong> — because the research is unambiguous that experiences (not things) produce lasting happiness, and because you are 23. You will never again have the health, energy, and freedom of your 20s, 30s, and 40s. Plan to use them.</p>
+  </div>
+
+  <div class="travel-grid">
+    <div class="travel-card">
+      <div class="travel-icon">✈️</div>
+      <div class="travel-phase">Phase 1 · Ages 23–24</div>
+      <div class="travel-budget">$4,800</div>
+      <div class="travel-per">per year</div>
+      <div class="travel-desc">One real road trip or domestic trip. Weekend escapes. Don't be broke but don't be boring.</div>
+    </div>
+    <div class="travel-card">
+      <div class="travel-icon">🌍</div>
+      <div class="travel-phase">DINK Years · Ages 25–27</div>
+      <div class="travel-budget">$10,800</div>
+      <div class="travel-per">per year</div>
+      <div class="travel-desc">This window doesn't last. One big international trip. One domestic long weekend. Go.</div>
+    </div>
+    <div class="travel-card">
+      <div class="travel-icon">👨‍👩‍👦</div>
+      <div class="travel-phase">Family Years · Ages 27–35</div>
+      <div class="travel-budget">$7,200</div>
+      <div class="travel-per">per year</div>
+      <div class="travel-desc">Family beach week. National parks. Kids remember experiences more than things.</div>
+    </div>
+    <div class="travel-card">
+      <div class="travel-icon">🗺️</div>
+      <div class="travel-phase">Acceleration · Ages 35–50</div>
+      <div class="travel-budget">$15,000</div>
+      <div class="travel-per">per year</div>
+      <div class="travel-desc">This is the era. International trips. Anniversary travel. Bucket list begins in earnest.</div>
+    </div>
+    <div class="travel-card">
+      <div class="travel-icon">🏔️</div>
+      <div class="travel-phase">Final Stretch · Ages 50–60</div>
+      <div class="travel-budget">$18,000</div>
+      <div class="travel-per">per year</div>
+      <div class="travel-desc">Bucket list. Peak health, peak income, near-peak freedom. Do the big ones now.</div>
+    </div>
+    <div class="travel-card">
+      <div class="travel-icon">🌅</div>
+      <div class="travel-phase">Retirement · Ages 60+</div>
+      <div class="travel-budget">$15,000+</div>
+      <div class="travel-per">per year (from portfolio)</div>
+      <div class="travel-desc">Fully funded from portfolio. $122K/yr retirement income has room for everything you want.</div>
+    </div>
+  </div>
+
+  <div class="callout sage">
+    <div class="callout-lbl">What This Costs the Portfolio</div>
+    <p>The difference between spending $10,000/year more on travel vs. investing it for 37 years at 7% is approximately <strong>$167,000</strong> in final portfolio value per extra $10K annual spend. That sounds like a lot until you realize it's 5% of a $3.5M portfolio. You are trading 5% of your final portfolio value for 37 years of experiences. The economics of a well-lived life look very different when you actually model them.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 7 — FAMILY & DAYCARE
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s7">
+  <div class="sec-hdr">
+    <div class="sec-tag">07 · Family Planning</div>
+    <h2>Two Kids Before She Turns <em>30</em></h2>
+    <p>Updated timeline — earlier babies, same Virginia daycare reality</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-lbl">Revised Timeline (vs. Previous Plan)</div>
+    <p>In the previous plan, children arrived at ages 31 and 33 (her ages). This plan moves that forward: <strong>Kid 1 born when she's 27 (his age 28, year 2030); Kid 2 when she's 29 (his age 30, year 2032)</strong>. Both children are born before she turns 30, per your preference. She returns full-time within 6 months of each birth. This slightly compresses the early savings phase but means daycare is done by ~2039–2040 rather than 2043 — actually creating a longer post-daycare acceleration window before retirement.</p>
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Year</th><th>His Age</th><th>Her Age</th><th>Kid 1</th><th>Kid 2</th><th class="r">Monthly Daycare</th><th class="r">Annual Daycare</th></tr></thead>
+    <tbody>
+      <tr><td>2030</td><td>27</td><td>~26</td><td>House purchase; Kid 1 expected late year</td><td>—</td><td class="r">$0</td><td class="r">$0</td></tr>
+      <tr><td>2031</td><td>28</td><td>~27</td><td>Born — wife on 6-month leave; then infant care</td><td>—</td><td class="r rd">$1,000</td><td class="r rd">$12,000</td></tr>
+      <tr><td>2032</td><td>29</td><td>~28</td><td>Toddler ($1,300/mo)</td><td>Born — wife on 6-month leave, then infant care</td><td class="r rd">$1,800</td><td class="r rd">$21,600</td></tr>
+      <tr style="background:rgba(196,75,43,0.05)"><td>2033</td><td>30</td><td>~29</td><td>Toddler/Preschool ($1,100)</td><td>Infant ($1,500)</td><td class="r rd" style="font-weight:700">$2,600</td><td class="r rd" style="font-weight:700">$31,200</td></tr>
+      <tr><td>2034</td><td>31</td><td>~30</td><td>Preschool ($1,000)</td><td>Toddler ($1,300)</td><td class="r rd">$2,300</td><td class="r rd">$27,600</td></tr>
+      <tr><td>2035</td><td>32</td><td>~31</td><td>Pre-K ($700)</td><td>Preschool ($1,000)</td><td class="r rd">$1,700</td><td class="r rd">$20,400</td></tr>
+      <tr><td>2036</td><td>33</td><td>~32</td><td>Kindergarten (public) + aftercare ($300)</td><td>Pre-K ($700)</td><td class="r rd">$1,000</td><td class="r rd">$12,000</td></tr>
+      <tr><td>2037</td><td>34</td><td>~33</td><td>1st grade — aftercare ($300)</td><td>Kindergarten + aftercare ($300)</td><td class="r rd">$600</td><td class="r rd">$7,200</td></tr>
+      <tr><td>2038+</td><td>35+</td><td>~34+</td><td>School activities only</td><td>School activities only</td><td class="r g">~$250</td><td class="r g">~$3,000</td></tr>
+      <tr class="tr-tot"><td colspan="5">Total Daycare Spend (2031–2038)</td><td class="r">—</td><td class="r">~$134,000</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout sage">
+    <div class="callout-lbl">Earlier Kids = Longer Post-Daycare Freedom Window</div>
+    <p>By having children before she turns 30, daycare is essentially over by age 35 — giving you <strong>25 years</strong> of post-daycare, dual-income investment time before retirement (vs. 19 years in the previous plan). The earlier "pain" of daycare during the house purchase years is more than compensated by the longer compounding runway afterward. This timing actually works slightly better for wealth building.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 8 — 529 PLANS
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s8">
+  <div class="sec-hdr">
+    <div class="sec-tag">08 · Education Savings</div>
+    <h2>529 Plans — <em>$50K</em> Each, On Schedule</h2>
+    <p>Virginia Invest529; $150/month per child; same goal, earlier timeline</p>
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Parameter</th><th>Child 1 (Born 2031)</th><th>Child 2 (Born 2032)</th></tr></thead>
+    <tbody>
+      <tr><td>Contributions start</td><td>January 2032</td><td>January 2033</td></tr>
+      <tr><td>Monthly contribution</td><td>$150/month</td><td>$150/month</td></tr>
+      <tr><td>Investment term</td><td>17 years (to 2049)</td><td>17 years (to 2050)</td></tr>
+      <tr><td>Assumed return (nominal)</td><td>6.0%</td><td>6.0%</td></tr>
+      <tr><td>Total contributed</td><td>$30,600</td><td>$30,600</td></tr>
+      <tr><td>Growth</td><td>~$20,100</td><td>~$20,100</td></tr>
+      <tr class="tr-tot"><td>Projected balance at age 18</td><td>~$51,300</td><td>~$51,300</td></tr>
+      <tr><td>VA tax deduction savings</td><td>~$3,910</td><td>~$3,910</td></tr>
+      <tr><td>Both hit goal when he is</td><td>Age 46 (2049)</td><td>Age 47 (2050)</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout sand">
+    <div class="callout-lbl">When the 529 Payments End — A Portfolio Gift</div>
+    <p>The 529 contributions ($300/month combined) end by age 47. That $300/month, redirected to the taxable brokerage, compounds for 13 more years at 7% to add approximately <strong>$75,000</strong> to your retirement portfolio. Small amounts, long runway, big impact.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 9 — INVESTMENTS
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s9">
+  <div class="sec-hdr">
+    <div class="sec-tag">09 · Investment Strategy</div>
+    <h2>Simple, Diversified, <em>Unstressful</em></h2>
+    <p>Index funds, right accounts, right order — nothing exotic needed</p>
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Account</th><th>Priority</th><th>Target Contribution</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td>Roth IRA (both)</td><td class="sd">1st — Always</td><td>Max ($7K each = $14K combined)</td><td>Long-term tax-free wealth; contribution access = backup emergency fund</td></tr>
+      <tr><td>401(k) to match</td><td class="sd">2nd — Always</td><td>At minimum: employer match threshold</td><td>Guaranteed 50–100% return on matched dollars</td></tr>
+      <tr><td>HSA (if eligible)</td><td class="sd">3rd — If available</td><td>$7,300/year family max</td><td>Triple tax advantage; invest all of it; pay medical OOP; reimburse at 65</td></tr>
+      <tr><td>401(k) additional contributions</td><td class="sd">4th</td><td>Target 15–20% gross each; max $23.5K each when possible</td><td>Primary retirement vehicle; Traditional for tax deduction at high income</td></tr>
+      <tr><td>Taxable brokerage</td><td class="sd">5th</td><td>Everything left after living and fun</td><td>Early retirement bridge (60–65); accessible anytime; LTCG tax-efficient</td></tr>
+      <tr><td>529 Plans (×2)</td><td class="sd">Alongside brokerage</td><td>$150/child/month</td><td>Education savings; VA state tax deduction</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="two-col">
+    <div class="chart-card" style="margin:0">
+      <div class="chart-title">Asset Allocation — Ages 23–45</div>
+      <div class="chart-sub">90/10 growth-focused</div>
+      <canvas id="pieChart" height="200"></canvas>
+    </div>
+    <div>
+      <div class="callout" style="margin:0 0 14px">
+        <div class="callout-lbl">Roth vs. Traditional 401(k)</div>
+        <p style="font-size:13px;">Single income under ~$100K gross: Roth 401(k). Dual income pushing past $180K combined: switch his to Traditional (24% bracket deduction is real money). Her 401(k): Roth until income exceeds $130K individually; then Traditional. Both Traditional at $200K+ combined. Roth conversions happen ages 55–65 when income drops.</p>
+      </div>
+      <div class="callout sand" style="margin:0">
+        <div class="callout-lbl">The Simple Portfolio</div>
+        <p style="font-size:13px;">60% VTI (US total market) + 25% VXUS (international) + 10% VBR (small cap value) + 5% BND (bonds). That's it. Rebalance once a year. Never chase performance. The best investor behavior is boring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 10 — PROJECTIONS
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s10">
+  <div class="sec-hdr">
+    <div class="sec-tag">10 · The Numbers</div>
+    <h2>Portfolio Growth — <em>Age 23 to 65</em></h2>
+    <p>Real (inflation-adjusted) dollars, 7% real return, lifestyle-forward savings rate</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-lbl">Projection Assumptions</div>
+    <p>All values in <strong>real (inflation-adjusted) 2026 dollars</strong>. 7% real annual return. Savings rate ~25–30% of gross income (lower than previous plan; higher lifestyle spending). Daycare years show reduced contributions. Post-daycare acceleration assumes redirection of freed cash flow to investments. Withdrawals begin at age 60 ($95K/year real). Both 401(k)s, IRAs, and taxable brokerage combined.</p>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title">Portfolio Growth — The Full Arc</div>
+    <div class="chart-sub">The line isn't as steep as the max-savings plan — and that's the point. You spent the difference living.</div>
+    <canvas id="growthChart" height="300"></canvas>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Age</th><th>Year</th><th>Phase</th><th class="r">Net Contrib.</th><th class="r">Portfolio (Start)</th><th class="r">7% Growth</th><th class="r">Portfolio (End)</th></tr></thead>
+      <tbody id="projTable"></tbody>
+    </table>
+  </div>
+
+  <div class="stat-grid" style="margin-top:24px">
+    <div class="stat-card"><div class="stat-lbl">Portfolio at 35 (Daycare Done)</div><div class="stat-val" id="p35">—</div><div class="stat-sub">Re-acceleration begins</div></div>
+    <div class="stat-card sage"><div class="stat-lbl">Portfolio at 45 (Midpoint)</div><div class="stat-val" id="p45">—</div><div class="stat-sub">Past halfway to goal</div></div>
+    <div class="stat-card"><div class="stat-lbl">Portfolio at 55 (5 Yrs Out)</div><div class="stat-val" id="p55">—</div><div class="stat-sub">Home stretch — de-risk starts</div></div>
+    <div class="stat-card sand"><div class="stat-lbl">Portfolio at 60 (Retirement)</div><div class="stat-val" id="p60">—</div><div class="stat-sub">The goal</div></div>
+    <div class="stat-card"><div class="stat-lbl">Annual Retirement Income</div><div class="stat-val" id="swr60">—</div><div class="stat-sub">At 3.5% SWR</div></div>
+    <div class="stat-card clay"><div class="stat-lbl">Portfolio at 65 (Medicare)</div><div class="stat-val" id="p65">—</div><div class="stat-sub">After 5 years of draws</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="chart-card" style="margin:0">
+      <div class="chart-title">Annual Contributions vs. Returns</div>
+      <div class="chart-sub">Returns take over in your late 30s</div>
+      <canvas id="contribChart" height="250"></canvas>
+    </div>
+    <div class="chart-card" style="margin:0">
+      <div class="chart-title">Portfolio vs. "Max Savings" Plan</div>
+      <div class="chart-sub">The cost of enjoying your life — visualized</div>
+      <canvas id="compareChart" height="250"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 11 — RETIREMENT & WITHDRAWAL
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s11">
+  <div class="sec-hdr">
+    <div class="sec-tag">11 · The Exit</div>
+    <h2>Retirement at 60 — <em>Both of You</em></h2>
+    <p>Access strategy, healthcare bridge, and what retirement actually looks like</p>
+  </div>
+
+  <div class="retire-box">
+    <div class="rb-hdr">
+      <div class="rb-age">60</div>
+      <div class="rb-lbl">2063 · Together</div>
+      <div class="rb-title">Both walk out the door on the same day</div>
+      <div class="rb-desc">No phased transitions. No "you work while I explore." You build it together, you end it together. The portfolio does the rest — no worrying about whether you have enough, because at $3.5M with a $95–100K spending need, you have a 30+ year plan with meaningful margin.</div>
+    </div>
+    <div class="rb-stats">
+      <div class="rb-stat">
+        <div class="rb-stat-lbl">Portfolio (Real $)</div>
+        <div class="rb-stat-val">~$3.5M</div>
+        <div class="rb-stat-sub">Inflation-adjusted</div>
+      </div>
+      <div class="rb-stat">
+        <div class="rb-stat-lbl">Annual Spending Target</div>
+        <div class="rb-stat-val">$95–100K</div>
+        <div class="rb-stat-sub">Comfortable; not extravagant</div>
+      </div>
+      <div class="rb-stat">
+        <div class="rb-stat-lbl">Required SWR</div>
+        <div class="rb-stat-val">2.7–3.5%</div>
+        <div class="rb-stat-sub">Historically very safe</div>
+      </div>
+      <div class="rb-stat">
+        <div class="rb-stat-lbl">Social Security (age 67+)</div>
+        <div class="rb-stat-val">Bonus</div>
+        <div class="rb-stat-sub">Not counted; adds $30–50K/yr when it arrives</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub">Withdrawal Access Ladder</h3>
+
+  <div class="ladder-step">
+    <div class="ls-age">57–59<span>Pre-retire prep</span></div>
+    <div class="ls-body">
+      <span class="ls-tag lst-a">Preparation</span>
+      <h4>Build the 2-Year Cash Buffer + Begin Roth Conversions</h4>
+      <p>Three years before retirement, move 2 years of expenses ($190–200K) into a high-yield savings account or short-term treasuries. This is your sequence-of-returns buffer. Simultaneously, begin converting Traditional 401(k) → Roth IRA at $50–70K/year while still in moderate tax brackets (income is dropping as you prepare mentally for exit).</p>
+    </div>
+  </div>
+
+  <div class="ladder-step">
+    <div class="ls-age">60<span>Day One</span></div>
+    <div class="ls-body">
+      <span class="ls-tag lst-a">Taxable First</span>
+      <h4>Draw from Taxable Brokerage — No Restrictions, LTCG Rates</h4>
+      <p>Your taxable brokerage account has no age restriction. Withdraw here first. Long-term capital gains tax at your income level will be 0–15% — far below what you paid contributing. This is your primary income source from age 60–65. Also eligible: Roth IRA <em>contributions</em> (not earnings) — always accessible, always penalty-free.</p>
+    </div>
+  </div>
+
+  <div class="ladder-step">
+    <div class="ls-age">60–65<span>Healthcare bridge</span></div>
+    <div class="ls-body">
+      <span class="ls-tag lst-t">Healthcare</span>
+      <h4>ACA Marketplace — Manage MAGI for Subsidies</h4>
+      <p>The most expensive healthcare window: ages 60–65 before Medicare. Budget $22,000–30,000/year for a couple on ACA marketplace. By drawing primarily from taxable brokerage (low/zero income) and Roth contributions (not counted as income), you may qualify for meaningful ACA subsidies — potentially reducing actual premiums to $12,000–18,000/year. Plan for the worst; budget $25K/year to be safe.</p>
+    </div>
+  </div>
+
+  <div class="ladder-step">
+    <div class="ls-age">59½<span>Full unlock</span></div>
+    <div class="ls-body">
+      <span class="ls-tag lst-r">All Access</span>
+      <h4>Full Access to All Accounts — Traditional IRA/401(k) Without Penalty</h4>
+      <p>Six months into retirement, all Traditional accounts become fully accessible without the 10% penalty. Roth earnings also fully unlocked (account is well past 5 years old). This is largely a non-event in your plan since you have the taxable bridge, but it means your full $3.5M is now completely liquid and accessible.</p>
+    </div>
+  </div>
+
+  <div class="ladder-step">
+    <div class="ls-age">65<span>Medicare</span></div>
+    <div class="ls-body">
+      <span class="ls-tag lst-t">Healthcare Relief</span>
+      <h4>Medicare — Healthcare Costs Drop 60–70%</h4>
+      <p>Medicare Part A (free), Part B (~$185/month each), Part D (~$50/month each), and a Medigap supplement (~$200/month each) = roughly $900/month total for both. Compared to $2,000–2,500/month ACA marketplace. This frees $1,100–1,600/month in spending — effectively a raise in retirement. Portfolio should still be near full strength at this point (~$3.2–3.4M).</p>
+    </div>
+  </div>
+
+  <div class="ladder-step" style="border-bottom:none">
+    <div class="ls-age">67<span>Social Security</span></div>
+    <div class="ls-body">
+      <span class="ls-tag lst-r">Bonus Income</span>
+      <h4>Social Security — The Plan Didn't Need It, But You Earned It</h4>
+      <p>At 40+ years of contributions in cleared/hospital positions, your combined Social Security at full retirement age (67) could be $35,000–55,000/year combined. This plan projects zero Social Security to be conservative. In reality, it likely replaces a large portion of your portfolio withdrawals — potentially allowing the portfolio to keep growing well into your 70s, or enabling significantly more spending/giving. Treat it as a bonus.</p>
+    </div>
+  </div>
+
+  <div class="callout sage">
+    <div class="callout-lbl">Healthcare Is the Only Real Risk at 60</div>
+    <p>With a $3.5M portfolio and $95K annual spending, market risk is negligible at a 2.7% SWR. The one variable that genuinely requires planning is healthcare from ages 60–65. Budget $25,000/year for ACA coverage, aggressively manage your MAGI via Roth draws (not counted as income) to qualify for subsidies, and confirm this number at age 58 when you can get real quotes. Once Medicare starts at 65, this risk essentially disappears.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 12 — RISKS & OPTIMIZATION
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="s12">
+  <div class="sec-hdr">
+    <div class="sec-tag">12 · Risk & Optimization</div>
+    <h2>What Could Go Wrong — And <em>How to Win More</em></h2>
+  </div>
+
+  <div class="risk-grid">
+    <div class="risk-card">
+      <div class="risk-hdr"><span class="risk-icon">💸</span><span class="risk-title">Lifestyle Creep Past the Fun Budget</span><span class="rbadge rb-hi">High Risk</span></div>
+      <p>This plan explicitly allocates more for lifestyle than typical FIRE plans — which is good. The risk is "spending $1,800/month on fun" becoming $3,200/month without anyone noticing over 5 years. Review your fun budget annually; adjust intentionally, not accidentally. The line between "living well" and "leaking savings" is behavioral, not mathematical.</p>
+    </div>
+    <div class="risk-card">
+      <div class="risk-hdr"><span class="risk-icon">🏥</span><span class="risk-title">ACA Healthcare Bridge (60–65)</span><span class="rbadge rb-hi">High Risk</span></div>
+      <p>Pre-Medicare coverage is your single biggest retirement planning risk. Budget $25K/year worst case. Manage MAGI via Roth draws. Get quotes at 58. If ACA costs run $30K+/year, the portfolio still handles it comfortably at 3.5% SWR — but you'll want the explicit plan in place, not the hope it works out.</p>
+    </div>
+    <div class="risk-card">
+      <div class="risk-hdr"><span class="risk-icon">🔒</span><span class="risk-title">Clearance Continuity</span><span class="rbadge rb-md">Medium Risk</span></div>
+      <p>TS/SCI clearance is worth $15–30K/year in salary premium. Losing it mid-career would require a recalibration. Maintain impeccable financial hygiene (no unexplained debt, no foreign financial entanglements) and personal conduct. Your clearance is as valuable as a professional license — protect it accordingly.</p>
+    </div>
+    <div class="risk-card">
+      <div class="risk-hdr"><span class="risk-icon">🏗️</span><span class="risk-title">Two House Purchases + Daycare Overlap</span><span class="rbadge rb-md">Medium Risk</span></div>
+      <p>House #1 purchase at ~age 28 overlaps with the start of Kid 1's daycare. Don't stretch on House #1 pricing just because dual income arrived — maintain a 15% gross income mortgage payment ceiling. If House #2 is purchased in your late 30s, wait until daycare is fully cleared (age 35+) to avoid compressing investments during the most powerful compounding decade.</p>
+    </div>
+    <div class="risk-card">
+      <div class="risk-hdr"><span class="risk-icon">📊</span><span class="risk-title">Under-Saving in the Early Years</span><span class="rbadge rb-md">Medium Risk</span></div>
+      <p>The "more lifestyle" approach only works if the non-negotiable savings (Roth IRA, at-minimum 401(k) match) actually happen every year. Missing even 3 years of Roth IRA contributions in your 20s costs roughly $60–80K in retirement wealth (time in market). Automate everything. The discipline is in the setup, not the willpower.</p>
+    </div>
+    <div class="risk-card">
+      <div class="risk-hdr"><span class="risk-icon">📉</span><span class="risk-title">Market Sequence at Retirement</span><span class="rbadge rb-lo">Low Risk</span></div>
+      <p>At 2.7–3.5% SWR on $3.5M, a 2-year bond tent plus the cash buffer you build at age 57–59 makes sequence of returns risk minimal. Even a 40% market crash on Day 1 of retirement leaves you with $2.1M at a temporary 4.8% SWR — still well within safe territory historically. This risk is real but manageable with the bond tent strategy.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Highest-Leverage Optimizations</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Opportunity</th><th>Effort</th><th>Lifetime Impact</th><th>When</th></tr></thead>
+    <tbody>
+      <tr><td>Max Roth IRA both accounts — every single year</td><td class="g">None (auto-debit)</td><td class="sd">~$180–250K at retirement from these contributions alone</td><td>Now, forever</td></tr>
+      <tr><td>HSA if employer HDHP available</td><td class="g">Very low</td><td class="sd">$7,300/yr triple tax-free; invest all of it; ~$180K if started at 25</td><td>Immediately</td></tr>
+      <tr><td>Dependent Care FSA during daycare years</td><td class="g">Very low</td><td class="sd">$5K/yr pre-tax × 6 years = ~$10,500 in tax savings</td><td>2031–2037</td></tr>
+      <tr><td>Virginia Invest529 tax deduction</td><td class="g">None (in the plan)</td><td class="sd">~$7,800 total VA tax savings across both children</td><td>2032+</td></tr>
+      <tr><td>Her hospital pension verification</td><td class="g">Low (just ask HR)</td><td class="sd">If available, a defined benefit pension could add $1,500–3,000/month at 60 — potentially transformative</td><td>This week</td></tr>
+      <tr><td>Negotiate clearance premium at every job change</td><td>Medium (requires research)</td><td class="sd">Each $10K salary increase = ~$180K additional portfolio at retirement</td><td>Every transition</td></tr>
+      <tr><td>Backdoor Roth when income exceeds IRA limits</td><td>Medium (annual process)</td><td class="sd">Never lose the $7K Roth contribution; at $240K+ combined income, do the backdoor</td><td>When applicable</td></tr>
+      <tr><td>Roth conversions at ages 55–65</td><td>Medium (annual planning)</td><td class="sd">Convert $50–70K/yr at lower tax rate; save estimated $40–90K lifetime taxes vs. traditional withdrawals</td><td>Age 55–65</td></tr>
+      <tr><td>ACA subsidy management at 60–65</td><td>Medium (tax planning)</td><td class="sd">Keep MAGI below ~$90K MFJ for premium tax credits; draw from Roth (not income) to hit this</td><td>Age 60–65</td></tr>
+      <tr><td>0% capital gains harvesting in retirement</td><td class="g">Low (annual review)</td><td class="sd">MFJ 0% LTCG threshold: take gains tax-free below ~$94K MAGI; rebalance without tax drag</td><td>Age 60+</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="philosophy" style="margin-top:32px;padding:36px 44px">
+    <div class="philosophy-tag">The Closing Thought</div>
+    <p>You don't need $10 million to retire well. You need <strong>enough</strong> — and a life rich enough along the way that you'd be proud of how you spent it. This plan gives you both. A real travel budget. Real dinners out. Kids whose childhood memories include adventures, not just frugality. And at 60, a portfolio that funds everything you need with comfortable margin, plus Social Security as a bonus that makes it even better. <strong>That's not compromise. That's the plan.</strong></p>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer class="doc-footer">
+  <strong>The Balanced Life Plan — Confidential Financial Roadmap</strong><br>
+  Married Couple · Age 23 · Virginia · TS/SCI Data Analyst + Hospital CCC-SLP · Both Retire at 60 · 2063<br><br>
+  All projections use 7% real (inflation-adjusted) annual returns. Career salaries are market estimates based on Virginia cleared-industry and hospital SLP compensation data; actual figures will vary. Daycare costs are Virginia regional estimates. This document is for educational and planning purposes only and does not constitute financial, tax, legal, or career advice. Consult a licensed CFP®, CPA, and/or attorney before implementing any financial strategy. Social Security projections are excluded to be conservative; actual benefits will supplement retirement income.
+</footer>
+
+<!-- ════════════════════════════════════════════════════════════
+     JAVASCRIPT — CHARTS + PROJECTIONS
+═══════════════════════════════════════════════════════════════ -->
+<script>
+const RUST  = '#c44b2b';
+const RUST2 = '#e06848';
+const SAND  = '#d4a96a';
+const SAGE  = '#5c7a5c';
+const SAGE2 = '#7a9a7a';
+const CLAY  = '#8a5a3c';
+const NAVY  = '#1e2a3a';
+const PAPER = '#f4f0e8';
+const BONE  = '#ede8df';
+
+// ─── PIE CHART ───────────────────────────────────────────────
+new Chart(document.getElementById('pieChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['US Total Market 60%','International 25%','Small Cap Value 10%','Bonds 5%'],
+    datasets: [{ data:[60,25,10,5],
+      backgroundColor:[RUST,NAVY,SAND,SAGE],
+      borderColor:'#fff', borderWidth:3
+    }]
+  },
+  options:{ cutout:'62%', plugins:{ legend:{ position:'right', labels:{ font:{family:'Jost',size:11}, color:'#5a4a38', padding:10 } } } }
+});
+
+// ─── PROJECTION DATA ─────────────────────────────────────────
+// Real dollars, 7% real return, lifestyle-forward savings rate
+// Contributions are lower than Plan B; more goes to living
+const PHASES = {
+  23:'Foundation', 24:'Foundation',
+  25:'DINK Surge', 26:'DINK Surge', 27:'DINK Surge',
+  28:'Kid 1 + House', 29:'Kid 2 + Family', 30:'Family — Daycare',
+  31:'Family — Peak', 32:'Family — Declining', 33:'Family — Declining',
+  34:'Re-Acceleration', 35:'Re-Acceleration', 36:'Re-Acceleration',
+  37:'Re-Acceleration', 38:'Peak Saving', 39:'Peak Saving',
+  40:'Peak Saving', 41:'Peak Saving', 42:'Peak Saving',
+  43:'Peak Saving', 44:'Peak Saving', 45:'Peak Saving',
+  46:'Peak Saving', 47:'Peak — 529 wind-down', 48:'Peak Saving',
+  49:'Peak Saving', 50:'Peak Saving', 51:'Peak Saving',
+  52:'Peak Saving', 53:'Peak Saving', 54:'Peak Saving',
+  55:'Final Stretch', 56:'Final Stretch', 57:'Final Stretch',
+  58:'Final Stretch', 59:'Final Stretch',
+  60:'Both Retired', 61:'Both Retired', 62:'Both Retired',
+  63:'Both Retired', 64:'Both Retired', 65:'Both Retired'
+};
+
+// Lower contributions — more going to lifestyle, travel, fun
+const CONTRIBS = {
+  23: 13000, 24: 28000,
+  25: 42000, 26: 44000, 27: 40000,   // house saving; DINK years
+  28: 30000, 29: 26000, 30: 24000,   // kid 1 arrives, house, kid 2
+  31: 22000, 32: 28000, 33: 32000,   // daycare declining
+  34: 42000, 35: 50000, 36: 54000,   // daycare ends; re-accel
+  37: 58000, 38: 62000, 39: 64000,
+  40: 66000, 41: 68000, 42: 70000,
+  43: 71000, 44: 73000, 45: 74000,
+  46: 75000, 47: 72000, 48: 73000,   // 529 wind-down; keep investing
+  49: 74000, 50: 75000, 51: 74000,
+  52: 76000, 53: 76000, 54: 75000,
+  55: 70000, 56: 68000, 57: 65000,
+  58: 60000, 59: 55000,
+  60: -95000, 61: -97000, 62: -99000, 63: -101000, 64: -103000, 65: -90000
+};
+
+const fK = n => { const a=Math.abs(n); if(a>=1e6) return (n<0?'-':'')+'$'+(a/1e6).toFixed(2)+'M'; return (n<0?'-':'')+'$'+Math.round(a/1000)+'K'; };
+const fM = n => '$'+(n/1e6).toFixed(2)+'M';
+
+const rows = [];
+let port = 20000;
+for(let age=23; age<=65; age++){
+  const c = CONTRIBS[age];
+  const bStart = port;
+  const growth = Math.round((bStart + c/2) * 0.07);
+  port = bStart + c + growth;
+  rows.push({age, year:2026+(age-23), phase:PHASES[age], c, bStart, growth, bEnd:port});
+}
+
+// Populate table
+const tbody = document.getElementById('projTable');
+rows.forEach(r=>{
+  const isMile = [35,45,55,60,65].includes(r.age);
+  const isOut  = r.c < 0;
+  const mileLbl =
+    r.age===35 ? ' ✓ Daycare Over' :
+    r.age===45 ? ' ✓ Halfway' :
+    r.age===55 ? ' Final Stretch' :
+    r.age===60 ? ' 🌅 Both Retire' :
+    r.age===65 ? ' Medicare' : '';
+  tbody.innerHTML += `<tr class="${r.age===60?'tr-tot':isMile?'tr-tot':''}">
+    <td>${r.age}${mileLbl?`<strong style="color:var(--rust)"> ${mileLbl}</strong>`:''}
+    </td>
+    <td>${r.year}</td>
+    <td style="font-size:11.5px;color:var(--text-l)">${r.phase}</td>
+    <td class="r ${isOut?'rd':'sd'}">${fK(r.c)}</td>
+    <td class="r">${r.bStart>=1e6?fM(r.bStart):fK(r.bStart)}</td>
+    <td class="r g">${fK(r.growth)}</td>
+    <td class="r" style="font-weight:600;color:var(--ink)">${r.bEnd>=1e6?fM(r.bEnd):fK(r.bEnd)}</td>
+  </tr>`;
+});
+
+const at = age => rows.find(r=>r.age===age).bEnd;
+document.getElementById('p35').textContent  = fM(at(35));
+document.getElementById('p45').textContent  = fM(at(45));
+document.getElementById('p55').textContent  = fM(at(55));
+document.getElementById('p60').textContent  = fM(at(60));
+document.getElementById('swr60').textContent= '$'+Math.round(at(60)*0.035/1000)+'K/yr';
+document.getElementById('p65').textContent  = fM(at(65));
+
+// Growth chart
+const labels = rows.map(r=>`${r.age}`);
+const portVals = rows.map(r=>r.bEnd);
+const growthVals = rows.map(r=>r.growth);
+const contribVals = rows.map(r=>r.c);
+
+new Chart(document.getElementById('growthChart'),{
+  type:'line',
+  data:{ labels,
+    datasets:[{
+      label:'Portfolio (Real $)',
+      data:portVals,
+      borderColor:RUST,
+      backgroundColor:'rgba(196,75,43,0.06)',
+      borderWidth:3, fill:true, tension:0.4,
+      pointRadius:portVals.map((_,i)=>[12,22,32,37].includes(i)?6:2),
+      pointBackgroundColor:portVals.map((_,i)=>[37-23].includes(i)?SAND:RUST),
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>` Portfolio: ${ctx.raw>=1e6?fM(ctx.raw):fK(ctx.raw)}`}}
+    },
+    scales:{
+      y:{grid:{color:'rgba(0,0,0,0.04)'}, ticks:{callback:v=>v>=1e6?fM(v):fK(v), font:{family:'Fira Mono',size:10}}},
+      x:{grid:{display:false}, ticks:{font:{size:10}, maxTicksLimit:14}}
+    }
+  }
+});
+
+// Contribution vs returns
+new Chart(document.getElementById('contribChart'),{
+  type:'bar',
+  data:{labels,
+    datasets:[
+      {label:'Contributions / Withdrawals', data:contribVals, backgroundColor:contribVals.map(v=>v>=0?'rgba(30,42,58,0.65)':'rgba(196,75,43,0.65)'), borderRadius:2, stack:'a'},
+      {label:'Investment Returns', data:growthVals, backgroundColor:'rgba(92,122,92,0.7)', borderRadius:2, stack:'a'}
+    ]
+  },
+  options:{
+    responsive:true,
+    plugins:{legend:{labels:{font:{family:'Jost',size:11},color:'#5a4a38'}}},
+    scales:{
+      y:{stacked:true, grid:{color:'rgba(0,0,0,0.04)'}, ticks:{callback:v=>fK(v), font:{family:'Fira Mono',size:10}}},
+      x:{stacked:true, grid:{display:false}, ticks:{font:{size:10}, maxTicksLimit:14}}
+    }
+  }
+});
+
+// Compare chart — this plan vs max savings (Plan B)
+const maxSavings = [
+  37000,69000,
+  90000,94000,100000,106000,114000,122000,
+  70000,68000,76000,82000,96000,108000,
+  132000,140000,146000,152000,158000,162000,
+  166000,172000,176000,180000,184000,186000,
+  178000,176000,182000,188000,192000,194000,
+  196000,198000,200000,200000,195000,188000,
+  182000,176000,
+  -90000,-92000,-94000,-96000,-98000,-90000
+];
+let maxPort = 20000;
+const maxPortVals = [];
+for(let i=0;i<43;i++){
+  const c = maxSavings[i]||0;
+  const g = Math.round((maxPort + c/2)*0.07);
+  maxPort = maxPort + c + g;
+  maxPortVals.push(maxPort);
+}
+
+new Chart(document.getElementById('compareChart'),{
+  type:'line',
+  data:{labels,
+    datasets:[
+      {label:'This Plan (Balanced Life)',data:portVals,borderColor:RUST,backgroundColor:'rgba(196,75,43,0.07)',borderWidth:2.5,fill:true,tension:0.4,pointRadius:2},
+      {label:'Max Savings Plan (Plan B)',data:maxPortVals,borderColor:BONE,borderDash:[6,3],backgroundColor:'rgba(200,195,185,0.04)',borderWidth:1.5,fill:true,tension:0.4,pointRadius:0}
+    ]
+  },
+  options:{
+    responsive:true,
+    plugins:{
+      legend:{labels:{font:{family:'Jost',size:11},color:'#5a4a38'}},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.raw>=1e6?fM(ctx.raw):fK(ctx.raw)}`}}
+    },
+    scales:{
+      y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{callback:v=>v>=1e6?fM(v):fK(v),font:{family:'Fira Mono',size:10}}},
+      x:{grid:{display:false},ticks:{font:{size:10},maxTicksLimit:14}}
+    }
+  }
+});
+</script>
+</body>
+</html>
